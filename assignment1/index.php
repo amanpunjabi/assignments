@@ -1,4 +1,4 @@
-<?php $base_url = "http://localhost/aman/html/ass1/";?>
+<?php $base_url = "http://localhost/aman/assignment1/";?>
 <!DOCTYPE html>
 <html>
 	<head>

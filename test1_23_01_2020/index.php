@@ -2,15 +2,15 @@
 <html>
 <head>
 	<title>Home</title>
-	<!-- bootstrap cdn and jquery library -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	 
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 
  
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="jquery/jquery.min.js"></script>
 
 	 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<link href= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'> 
+	<script src="js/bootstrap.min.js"></script>
+	<link href= 'jquery/jquery-ui.css' rel='stylesheet'> 
 	 
 
 	<!-- date picker css -->
@@ -20,7 +20,7 @@
 <body>
 	<div class="container">
 		<div class="page-header">
-		<nav class="navbar"><img src="https://www.neosofttech.com/sites/all/themes/neosoft2017/images/neosoft.svg" alt="" class="col-sm-3" height="100px" width="100px">
+		<nav class="navbar"><img src="images/neosoft.svg" alt="" class="col-sm-3" height="100px" width="100px">
 		 
 		<h1 class="text-right text-info">Neosoft trainees test</h1></nav>
 	 	</div>
@@ -148,7 +148,7 @@
 	</div>
  
  	<script type="text/javascript" src="custom.js"></script>
- 	 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > 
+ 	 <script src="jquery/jquery-ui.min.js" > 
     </script>
 
  	<script> 

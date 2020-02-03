@@ -16,6 +16,8 @@
   {
     $page_no = 1;
   }
+  $prev = $page_no-1;
+  $next = $page_no+1;
  
   $total_records_per_page = 10;
   $offset = ($page_no-1) * $total_records_per_page;
@@ -136,7 +138,7 @@
                   <nav aria-label="...">
                   <ul class="pagination">
                     <li class="page-item <?=($page_no==1)?'disabled':''?>">
-                      <a class="page-link" href="?page=1" tabindex="-1">First</a>
+                      <a class="page-link" href="?page=<?=$prev?>" tabindex="-1">Previous</a>
                     </li>
                     <?php 
                     for($i=1;$i<=$total_pages;$i++)
@@ -145,7 +147,7 @@
                     <li class="page-item <?=($page_no==$i)?'active':''?>"><a class="page-link" href="?page=<?=$i?>"><?=$i?></a></li>
                     <?php } ?>
                     <li class="page-item <?=($page_no==$total_pages)?'disabled':''?>">
-                      <a class="page-link " href="?page=<?=$total_pages?>">Last</a>
+                      <a class="page-link " href="?page=<?=$next?>">Next</a>
                     </li>
                   </ul>
                   </nav>

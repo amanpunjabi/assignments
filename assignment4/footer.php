@@ -14,11 +14,11 @@
 	<div class="bg-dark container-fluid footer">
 		<div class="row justify-content-center p-5">
 			<div class="col col-lg-4">
-       		<img src="<?=$base_url?>images/foot_logo.png" style="width: 279px;" />
+       		<img src="<?=$base_url?>images/foot_logo.png" class="col-sm-12 mb-2" style="width: 279px;" />
     		</div>
      
-		    <div class="col col-lg-6 text-center">
-			    <span class=" text-white" style=" 
+		    <div class="col col-lg-6 text-center ">
+			    <span class="text-white" style=" 
 							    font-size: 26px;
 							    line-height: 28px;
 

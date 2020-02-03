@@ -27,14 +27,14 @@
 				</span>
 		    </div>
 		</div>
-		<div class="row justify-content-center pl-5 text-white">
-			<div class="col col-lg-4 col-sm-12">
+		<div class="row justify-content-center pl-5 text-white col-sm-12">
+			<div class="col col-lg-4 ">
        		<h3 class="satisfy ">Call Us Today! (02) 9017 8413</h3>
     		</div>
      
-		    <div class="col col-lg-6 col-sm-12 mb-2 text-center">
-			  <button type="button" class="btn btn-success btn-lg">Book an Appointment  <img src="<?=$base_url?>images/icon7.png" alt=""></button>
-			  <button type="button" class="btn btn-success btn-lg">Contact a Constaltant <img src="<?=$base_url?>images/icon6.png" alt=""></button>
+		    <div class="col col-lg-6   mb-2 text-center">
+			  <button type="button" class="btn btn-success btn-lg m-2">Book an Appointment  <img src="<?=$base_url?>images/icon7.png" alt=""></button>
+			  <button type="button" class="btn btn-success btn-lg m-2">Contact a Constaltant <img src="<?=$base_url?>images/icon6.png" alt=""></button>
 			 </div>
 		</div>
 		<div class="row p-4 mt-5 ml-5 mr-5">
@@ -100,7 +100,7 @@
 				© VitalPartners.com.au
 		  </div> 
 			<div > 
-				<a href="contact_us.html">Contact</a> |  <a href="terms_of_use.html">Terms of Use</a> |   <a href="privacy_policy.html">Privacy Policy</a> |  <a href="disclaimer.html">Disclaimer</a>
+				<a href="contact_us.html">Contact</a>|<a href="terms_of_use.html">Terms of Use</a>|<a href="privacy_policy.html">Privacy Policy</a>|<a href="disclaimer.html">Disclaimer</a>
             </div> 
 
 

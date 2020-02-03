@@ -22,6 +22,7 @@
             <button class="navbar-toggler hidden-md-up pull-xs-right" data-target="#collapsenav" data-toggle="collapse" type="button">
 	            ☰
 	        </button>
+           
             <div class="collapse navbar-collapse navbar-light" id="collapsenav"> 
                 <ul class="navbar-nav"> 
                     <li class="nav-item"> 

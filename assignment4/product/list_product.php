@@ -116,7 +116,7 @@
                     <table id="category_table" class="table table-striped table-bordered ">
                     <thead>
                     <tr>
-                    <th><input type="checkbox" class="form-control form-control-sm" name=""></th>
+                    <th>&nbsp;&nbsp;&nbsp;</th>
                     <th>ID</th>
                     <th>Product Name</th>
                     <th>Price</th>

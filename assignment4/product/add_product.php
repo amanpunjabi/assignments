@@ -25,10 +25,11 @@
         
       }
       $target_dir = "uploads/";
-      $target_file = $target_dir.$fileInfo['filename']."_" .time().".".$fileInfo['extension'];
+      $filename =  $fileInfo['filename']."_" .time().".".$fileInfo['extension'];
+      $target_file = $target_dir.$filename;
       if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
       {
-       $image = $fileInfo['filename']."_" .time().".".$fileInfo['extension'];
+       $image = $filename;
       } 
     }
     $product->add_product($name,$price,$category_id,$image);

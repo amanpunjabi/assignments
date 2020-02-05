@@ -15,7 +15,7 @@ class Database{
     $this->host = 'localhost';
     $this->user = 'root';
     $this->pass = '';
-    $this->db = 'vital_partners';
+    $this->db = 'vital_partner';
 
     $this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->db);
     return $this->mysqli;

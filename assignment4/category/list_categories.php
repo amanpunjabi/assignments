@@ -82,10 +82,12 @@
                    <div class="float-right">
 
                       <a href="add_category.php" class="btn btn-success">Add Category</a>
-                      <button type="submit" href="#.php" class="btn btn-success"  onclick="return confirm_swal();">Delete</button>
+                      <button type="submit"  class="btn btn-success"  onclick="return confirm_swal();">Delete</button>
 
                   </div>
+                  <div>
                   <h2 class="">Categories</h2>
+                  </div>
                     <?php 
                       if(!empty($_GET['message'])) {
                         $message = $_GET['message'];
@@ -112,7 +114,7 @@
                     <table id="category_table" class="table table-striped table-bordered ">
                     <thead>
                     <tr>
-                    <th></th>
+                    <th>&nbsp;&nbsp;&nbsp;</th>
                     <th>Category Name</th>
                     <th>Parent Category</th>
                     <th>Actions</th>

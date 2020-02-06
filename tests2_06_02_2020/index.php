@@ -153,8 +153,10 @@ if(!empty($_POST))
 	    <div class="form-group">
 	      <label class="control-label col-sm-2">Email:</label>
 	      <div class="col-sm-7">
-	        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>" onkeyup="validate_email()">
-	        <label id="email-error" class="error" for="email"><?=$emailerr?></label>
+	        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>"  >
+	        
+		<!--        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>" onkeyup="validate_email()"> -->
+		      <label id="email-error" class="error" for="email"><?=$emailerr?></label>
 	      </div>
 	    
 	    </div>
@@ -162,8 +164,11 @@ if(!empty($_POST))
 	     <div class="form-group">
 	      <label class="control-label col-sm-2">Contact:</label>
 	      <div class="col-sm-7">
-	        <input type="text" class="form-control" id="contact" placeholder="Enter Phone number" name="contact" maxlength="10" value="<?=$contact?>" onkeyup="validate_contact()" />
-	        <label id="contact-error" class="error" for="contact"><?=$contacterr?></label>
+<!-- 	        <input type="text" class="form-control" id="contact" placeholder="Enter Phone number" name="contact" maxlength="10" value="<?=$contact?>" onkeyup="validate_contact()" /> -->
+	       
+	        <input type="text" class="form-control" id="contact" placeholder="Enter Phone number" name="contact" maxlength="10" value="<?=$contact?>" />
+		      
+		      <label id="contact-error" class="error" for="contact"><?=$contacterr?></label>
 	      </div>
 	    
 	    </div>

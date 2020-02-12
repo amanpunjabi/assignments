@@ -72,14 +72,51 @@ class Employee {
   function delete_user($user_id)
   {
     $sql = "delete from employee where id =".$user_id.";";
+    $result = $this->get_user_by_id($user_id);
+    $row = $result->fetch_assoc();
     if($this->conn->query($sql) === TRUE)
     {
+      
+      $image = $row['image'];
+      unlink('uploads/'.$image);
       header("Location: index.php?message_delete=success");
     }
     else
     {
       header("Location: index.php?message_delete=failed");
     }
+  }
+
+  function get_user_by_id($user_id)
+  {
+    $sql = "select * from employee where id=".$user_id;
+    echo "$sql";
+    return $this->conn->query($sql);
+  }
+
+  function update_user($name,$email,$contact,$city,$gender,$image,$id)
+  {
+    if($image ==  "")
+    {
+      $sql = "update  employee set name = '$name',email='$email',contact='$contact',city='$city',gender='$gender' where id=$id";
+
+    }
+    else
+    {
+      $sql = "update  employee set name = '$name',email='$email',contact='$contact',city='$city',gender='$gender',image='$image' where id=$id";
+
+    }
+    // echo $sql;exit;
+    if($this->conn->query($sql) === TRUE)
+    {
+      header("Location: index.php?message_update=success");
+    }
+    else
+    {
+      header("Location: index.php?message_update=failed");
+    }
+
+    
   }
  
 }

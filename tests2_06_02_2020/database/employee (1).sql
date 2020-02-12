@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2020 at 01:45 PM
+-- Generation Time: Feb 12, 2020 at 12:25 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -39,18 +39,6 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `employee`
---
-
-INSERT INTO `employee` (`id`, `name`, `email`, `contact`, `city`, `gender`, `image`) VALUES
-(9, 'amandeep', 'amanpunjabi61@gmail.com', '8888888888', 'city1', 'male', 'blog_image_3_1580988105.jpg'),
-(10, 'harsh ', 'harsh@gmail.com', '9888999999', 'city2', 'male', 'blog_image_1_1580988166.jpg'),
-(11, 'priyam ', 'abc@gmail.com', '3333333333', 'city1', 'male', 'blog_image_2_1580988837.jpg'),
-(12, 'first anme', 'email', '4454545454', 'baroda', 'male', ''),
-(13, 'harsh new', 'harsh123@gmail.com', '8888880000', 'baroda', 'male', 'download_1580992687.jpeg'),
-(14, 'jaini', 'jaini@gmail.com', '8888888880', 'baroda', 'female', 'comment_box_user_image_1580992951.jpg');
-
---
 -- Indexes for dumped tables
 --
 
@@ -68,7 +56,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

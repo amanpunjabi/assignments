@@ -29,7 +29,6 @@ if(isset($_POST['contact']))
     echo json_encode($status);
     exit;
 }
-
-
+   
 
 ?>

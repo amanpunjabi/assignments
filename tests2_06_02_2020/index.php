@@ -5,12 +5,91 @@ require_once ('employee.php');
 $employee = new Employee();
 $namerr = $emailerr = $contacterr = $cityerr = $gendererr ="";
 $name = $email = $contact = $city = $gender = "";
+$head = "Registration Form";
+	       
+$submit_button = '<button type="submit" name="submit" class="btn btn-default btn-success">Submit</button>';
+$form_id = "register";
 
-if(!empty($_POST))
+if(isset($_GET['user_id']))
 {
+  $user_data = $employee->get_user_by_id($_GET['user_id'])->fetch_assoc();
+  $id= $_GET['user_id'];
+  $name = $user_data['name'];
+  $email = $user_data['email'];
+  $contact = $user_data['contact'];
+  $city = $user_data['city'];
+  $gender = $user_data['gender'];
+  $image = $user_data['image'];
+  $head = "Update Form";
+  $submit_button = '<button type="submit" name="update" class="btn btn-default btn-success">Update</button>';
+  $form_id = "update";
 
-	 
-    $name = $_POST['name'];
+
+}
+if(!empty($_POST) &&isset($_POST['update']))
+{
+	 $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $city = $_POST['city'];
+    $gender= "";
+    $image = "";
+    $id = $_POST['user_id'];
+    //check for the required field server side validations
+    if(trim($name) == "")
+    {
+    	$namerr =  "please enter your name.";
+    }
+    if(trim($email) == "")
+    {
+    	$emailerr = "please enter your email.";
+    }
+    if(trim($contact) == "")
+    {
+    	$contacterr = "please enter contact.";
+    }
+    if(trim($city) == "")
+    {
+    	$cityerr = "please select city.";
+    }
+
+    if(isset($_POST['gender']))
+    {
+     $gender = $_POST['gender'];
+    }
+    else
+    {
+    	$gendererr = "please select gender.";
+    }
+     
+	if($namerr == "" && $emailerr == "" && $contacterr == "" && $cityerr =="" && $gendererr == "")
+	{
+		if(isset($_FILES['image']) && $_FILES['image']['name']!="")
+	    {
+	      $fileInfo = PATHINFO($_FILES["image"]["name"]);
+	      $file_type = $fileInfo['extension']; 
+	      $allowed = array("jpeg", "gif", "png","jpg");
+	      if(!in_array($file_type, $allowed)) 
+	      {
+	        $error_message = 'Only jpg, gif, and png files are allowed.';
+	        
+	      }
+	      $target_dir = "uploads/";
+	      $filename =  $fileInfo['filename']."_" .time().".".$fileInfo['extension'];
+	      $target_file = $target_dir.$filename;
+	      if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
+	      {
+	       $image = $filename;
+	      } 
+	    }
+	    $employee->update_user($name,$email,$contact,$city,$gender,$image,$id);
+	}
+    
+
+}
+if(!empty($_POST) && isset($_POST['submit']))
+{
+ 	$name = $_POST['name'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
     $city = $_POST['city'];
@@ -137,6 +216,27 @@ if(!empty($_POST))
 	</div>
 	<div class="mt-2">
 		<?php 
+          if(!empty($_GET['message_update'])) {
+            $message = $_GET['message_update'];
+            if($message == "success")
+            {
+              echo    '<div class="alert alert-success alert-dismissible" runat ="server" id="modalEditError" visible ="false">
+			  <button class="close" type="button" data-dismiss="alert">×</button>
+			  <strong>Updation Successfull!</strong> <div id="Div2" runat="server" ></div>
+			</div>';
+            }
+            else
+            {
+             echo    '<div class="alert alert-danger alert-dismissible" runat ="server" id="modalEditError" visible ="false">
+			  <button class="close" type="button" data-dismiss="alert">×</button>
+			  <strong>Updation Failed!</strong> <div id="Div2" runat="server" ></div>
+			</div>';
+            }
+          }
+		?>
+	</div>
+	<div class="mt-2">
+		<?php 
           if(!empty($_GET['message_delete'])) {
             $message_delete = $_GET['message_delete'];
             if($message_delete == "success")
@@ -160,10 +260,10 @@ if(!empty($_POST))
 	<div class="card m-5">
 
 		<div class="card-header">
-	  	<h2>Registration Form</h2>
+	  	<h2><?=$head?></h2>
 	  	</div>
 	  	<div class="card-body">
-	 	<form class="form" action="" id="register" method="post" enctype="multipart/form-data" >
+	 	<form class="form" action="" id="<?=$form_id?>" method="post" enctype="multipart/form-data" >
 
 	  	<div class="form-group">
 	      <label class="control-label col-sm-2">Name:</label>
@@ -181,6 +281,7 @@ if(!empty($_POST))
 	        
 		       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>"  >
 		      <label id="email-error" class="error" for="email"><?=$emailerr?></label>
+		      <input type="hidden" name="user_id" value="<?=$id?>">
 		     <!-- <span class="error" id="email-error-span"></span> -->
 	      </div>
 	    
@@ -228,17 +329,26 @@ if(!empty($_POST))
 	    </div>
 
 	    <div class="form-group">
+	    	
+
 	      <label class="control-label col-sm-2">Profile Picture:</label>
+
 	      <div class="col-sm-7">
 	     	<input type="file" name="image" id="image" />
+	     	<br>
+	     	<br>
+	     	<?php if(isset($image) && $image != "") { ?>
+	     	<img src="uploads/<?=$image?>" height="100px" width="100px">
+	     	<?php } ?>
 	      </div>
+
 	       
 	    </div>
 
 
 	    <div class="form-group">        
 	      <div class="col-sm-offset-2 col-sm-10">
-	        <button type="submit" class="btn btn-default btn-success">Submit</button>
+	      <?=$submit_button?>
 	      </div>
 	    </div>
 
@@ -281,8 +391,10 @@ if(!empty($_POST))
 			<td><?=$row['contact']?></td>
 			<td><?=$row['city']?></td>
 			<td><?=$row['gender']?></td>
-			<td><a  onclick=" return show_warning(this)" href="delete_user.php?id=<?=$row['id']?>" class="btn btn-danger a-btn-slide-text">
-                      <span><strong><i class="fa fa-trash"></i></strong></span></td>
+			<td>
+			<a href="index.php?user_id=<?=$row['id']?>"  class="btn btn-info">
+		   <span><strong><i class="fa fa-edit"></i></strong></a>
+		   <a  onclick=" return show_warning(this)" href="delete_user.php?id=<?=$row['id']?>" class="btn btn-danger a-btn-slide-text"><span><strong><i class="fa fa-trash"></i></strong></span></a></td>
 		</tr>
 		<?php } ?>	 
 		</tbody>
@@ -293,6 +405,8 @@ if(!empty($_POST))
 	</div>
 
 </div>
+
+
 
 
  

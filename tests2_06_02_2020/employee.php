@@ -90,7 +90,7 @@ class Employee {
   function get_user_by_id($user_id)
   {
     $sql = "select * from employee where id=".$user_id;
-    echo "$sql";
+    
     return $this->conn->query($sql);
   }
 

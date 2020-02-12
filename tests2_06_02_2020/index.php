@@ -156,9 +156,9 @@ if(!empty($_POST))
 	      <div class="col-sm-7">
 <!-- 	        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>"  > -->
 	        
-		       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>" onkeyup="validate_email()">
+		       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?=$email?>"  >
 		      <label id="email-error" class="error" for="email"><?=$emailerr?></label>
-		     <span class="error" id="email-error-span"></span>
+		     <!-- <span class="error" id="email-error-span"></span> -->
 	      </div>
 	    
 	    </div>
@@ -166,12 +166,12 @@ if(!empty($_POST))
 	     <div class="form-group">
 	      <label class="control-label col-sm-2">Contact:</label>
 	      <div class="col-sm-7">
-	        <input type="text" class="form-control" id="contact" placeholder="Enter Phone number" name="contact" maxlength="10" value="<?=$contact?>" onkeyup="validate_contact()" />
+	        <input type="text" class="form-control" id="contact" placeholder="Enter Phone number" name="contact" maxlength="10" value="<?=$contact?>"   />
 	       
 <!-- 	        <input type="text" class="form-control" id="contact" placeholder="Enter Phone number" name="contact" maxlength="10" value="<?=$contact?>" /> -->
 		      
 		      <label id="contact-error" class="error" for="contact"><?=$contacterr?></label>
-		      <span class="error" id="contact-error-span"></span>
+		      <!-- <span class="error" id="contact-error-span"></span> -->
 	      </div>
 	    
 	    </div>
@@ -207,7 +207,7 @@ if(!empty($_POST))
 	    <div class="form-group">
 	      <label class="control-label col-sm-2">Profile Picture:</label>
 	      <div class="col-sm-7">
-	     	<input type="file" name="image" />
+	     	<input type="file" name="image" id="image" />
 	      </div>
 	       
 	    </div>
@@ -282,7 +282,7 @@ if(!empty($_POST))
     $('#myTable').DataTable();
 } );
  </script>
- <script type="text/javascript">
+ <!-- <script type="text/javascript">
  	function validate_email()
  	{
  		$.ajax({
@@ -313,6 +313,6 @@ if(!empty($_POST))
 
 		});
  	}
- </script>
+ </script> -->
 </body>
 </html>

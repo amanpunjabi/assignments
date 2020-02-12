@@ -9,6 +9,43 @@ $(document).ready(function () {
       },""
     );
 
+    $.validator.addMethod("duplicate_email", function(value, element) {
+
+    var isSuccess=false;
+    $.ajax({
+        type: "post",
+        url: "ajaxserver.php",
+        data: {
+            email: value
+        },
+        async:false,
+        success: function (data) {
+        isSuccess = JSON.parse(data);
+         }
+      });
+    
+      return isSuccess;
+  }, "Email already exists.");
+
+
+  $.validator.addMethod("duplicate_contact", function(value, element) {
+
+    var isSuccess=false;
+    $.ajax({
+        type: "post",
+        url: "ajaxserver.php",
+        data: {
+            contact: value
+        },
+        async:false,
+        success: function (data) {
+        isSuccess = JSON.parse(data);
+         }
+      });
+    
+      return isSuccess;
+  }, "Contact already exist.");
+
   // validate signup form on keyup and submit
   $("#register").validate({
     rules: 
@@ -20,15 +57,18 @@ $(document).ready(function () {
        email:
        {
         required:true,
-        email:true
+        email:true,
+        duplicate_email:true
        },
        contact:
        {
         required:true,
         number:true,
         minlength:10,
-        maxlength:10
+        maxlength:10,
+        duplicate_contact:true
        },
+        
        city:
        {
         required:true,
@@ -36,7 +76,12 @@ $(document).ready(function () {
        gender:
        {
         required:true,
-       }
+       },
+      image:
+      {
+        required:true,
+         accept: "jpg,jpeg,png"
+       },
         
     },
     messages:
@@ -60,6 +105,11 @@ $(document).ready(function () {
       gender:
       {
         required:"please select gender."
+      },
+      image:
+      {
+        required:"<br>please select image.",
+        accept:"<br>only jpg,jpeg,png files allowed."
       }
     }
       

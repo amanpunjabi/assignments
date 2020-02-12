@@ -6,16 +6,28 @@ if(isset($_POST['email']))
 {
 	if(!$employee->validate_email($_POST['email']))
     {
-    	echo $emailerr = "email already exist.";
+    	$status = false;
     }
+    else
+    {
+    	$status = true;
+    }
+    echo json_encode($status);
+    exit;
 }
 
 if(isset($_POST['contact']))
 {
 	if(!$employee->validate_phone($_POST['contact']))
     {
-    	echo $emailerr = "Phone number already exist.";
+    	$status = false;
     }
+    else
+    {
+    	$status = true;
+    }
+    echo json_encode($status);
+    exit;
 }
 
 

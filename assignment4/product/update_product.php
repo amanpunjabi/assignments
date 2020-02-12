@@ -104,23 +104,25 @@
             {
               echo    '<div class="alert alert-success alert-dismissible" runat ="server" id="modalEditError" visible ="false">
   <button class="close" type="button" data-dismiss="alert">×</button>
-  <strong>Category Updated Successfully!</strong> <div id="Div2" runat="server" ></div>
+  <strong>Product Updated Successfully!</strong> <div id="Div2" runat="server" ></div>
 </div>';
             }
             else
             {
              echo    '<div class="alert alert-danger alert-dismissible" runat ="server" id="modalEditError" visible ="false">
   <button class="close" type="button" data-dismiss="alert">×</button>
-  <strong>Failed To Update Category!</strong> <div id="Div2" runat="server" ></div>
+  <strong>Failed To Update Product!</strong> <div id="Div2" runat="server" ></div>
 </div>';
             }
           }
 ?>
-		    <form id="update_category" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data" >
+		    <form id="update_product" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data" >
 		    <div class="form-group name_fileds">
         <div class="float-right">
-            <a href="list_product.php" class="btn btn-success">Manage Products</a>
+         <a href="<?=$base_url?>category/list_categories.php" class="btn btn-success">Manage Category</a>
+            <a href="<?=$base_url?>/product/list_product.php" class="btn btn-success">Manage Products</a>
         </div>
+        <br>
          <div class="form-group" >
           <label for="product">Product Name</label>
           <input type="text" class="form-control col-lg-8" id="product" placeholder="Enter product" name="product" value="<?=$name?>" >
@@ -194,10 +196,10 @@
     );
 
   // validate signup form on keyup and submit
-  $("#update_category").validate({
+  $("#update_product").validate({
     rules: 
     {
-      category:
+      product:
       { 
             required:true,
             regex: "^[a-zA-Z_ ]*$",
@@ -206,6 +208,10 @@
             }
             
       },
+      image:
+      {
+        accept:"jpg,jpeg,png,gif"
+      }
     },
     messages:
     {
@@ -213,6 +219,10 @@
       required: "Category Required",
       regex: 'Only alphabets allowed'
       },
+      image:
+      {
+        accept:"jpg,jpeg,png,gif files allowed."
+      }
     }
       
   });

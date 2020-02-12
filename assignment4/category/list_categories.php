@@ -80,7 +80,8 @@
                 <form action="delete_multiple_category.php" method="post" id="delete_multiple_category" >
                   <div class="card-header">
                    <div class="float-right">
-
+                   
+                      <a href="<?=$base_url?>/product/list_product.php" class="btn btn-success">Manage Products</a>
                       <a href="add_category.php" class="btn btn-success">Add Category</a>
                       <button type="submit"  class="btn btn-success"  onclick="return confirm_swal();">Delete</button>
 

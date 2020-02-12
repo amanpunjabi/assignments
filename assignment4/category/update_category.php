@@ -95,8 +95,11 @@
 		    <form id="update_category" method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 		    <div class="form-group name_fileds">
         <div class="float-right">
+            <a href="<?=$base_url?>/product/list_product.php" class="btn btn-success">Manage Products</a>
+
             <a href="list_categories.php" class="btn btn-success">Manage Category</a>
         </div>
+        <br>
         <div class="form-group">
 		      <label for="category">Category Name</label>
 		      <input type="text" class="form-control col-lg-8" id="category" value="<?=$cat_name?>" placeholder="Enter category" name="category">

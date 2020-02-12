@@ -88,9 +88,10 @@
 		    <form method="get" id="add_category" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate();">
 		     
          <div class="float-right">
+            <a href="<?=$base_url?>/product/list_product.php" class="btn btn-success">Manage Products</a>
             <a href="list_categories.php" class="btn btn-success">Manage Category</a>
         </div>
-        
+        <br>
         <div class="form-group" >
 		      <label for="category">Category Name</label>
 		      <input type="text" class="form-control col-lg-8" id="category" placeholder="Enter category" name="category">

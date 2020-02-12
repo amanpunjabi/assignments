@@ -101,8 +101,9 @@
 		    <form method="post" id="add_product" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate();" enctype="multipart/form-data"     >
 		     
          <div class="float-right">
-            <a href="list_product.php" class="btn btn-success">Manage product</a>
-        </div>
+          <a href="<?=$base_url?>category/list_categories.php" class="btn btn-success">Manage Category</a>
+          <a href="list_product.php" class="btn btn-success">Manage product</a>
+        </div><br>
         
         <div class="form-group" >
 		      <label for="product">Product Name</label>
@@ -170,6 +171,11 @@
             }
             
       },
+      image:
+      {
+        required:true,
+         accept: "jpg,jpeg,png"
+       },
       price:
       {
         required:true,
@@ -187,6 +193,10 @@
       required: "Product name is Required",
       regex: 'Only alphabets allowed'
       },
+      image:
+      {
+         accept: "jpg,jpeg,png files are allowed."
+       },
       price:{
         required:"Product price is Required",
         regex:"Please Enter Correct Amount"

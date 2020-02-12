@@ -94,6 +94,8 @@ if(!empty($_POST))
 
 <!-- custom css file -->
 <link rel="stylesheet" type="text/css" href="<?=$base_url?>css/custom.css">
+
+<link rel="stylesheet" href="<?=$base_url?>fontawesome/css/all.min.css">
 <!-- boostrap css and js files -->
 <link rel="stylesheet" type="text/css" href="<?=$base_url?>css/bootstrap.min.css">
 <!-- <link href='<?=$base_url?>css/fonts/satisfy' rel='stylesheet'> -->
@@ -128,6 +130,27 @@ if(!empty($_POST))
              echo    '<div class="alert alert-danger alert-dismissible" runat ="server" id="modalEditError" visible ="false">
 			  <button class="close" type="button" data-dismiss="alert">×</button>
 			  <strong>Registration Failed!</strong> <div id="Div2" runat="server" ></div>
+			</div>';
+            }
+          }
+		?>
+	</div>
+	<div class="mt-2">
+		<?php 
+          if(!empty($_GET['message_delete'])) {
+            $message_delete = $_GET['message_delete'];
+            if($message_delete == "success")
+            {
+              echo    '<div class="alert alert-success alert-dismissible" runat ="server" id="modalEditError" visible ="false">
+			  <button class="close" type="button" data-dismiss="alert">×</button>
+			  <strong>Record deleted Successfully!</strong> <div id="Div2" runat="server" ></div>
+			</div>';
+            }
+            else
+            {
+             echo    '<div class="alert alert-danger alert-dismissible" runat ="server" id="modalEditError" visible ="false">
+			  <button class="close" type="button" data-dismiss="alert">×</button>
+			  <strong>Failed to delete record!</strong> <div id="Div2" runat="server" ></div>
 			</div>';
             }
           }
@@ -240,6 +263,7 @@ if(!empty($_POST))
 			<th>Contact</th>
 			<th>Gender</th>
 			<th>City</th>
+			<th>Action</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -257,6 +281,8 @@ if(!empty($_POST))
 			<td><?=$row['contact']?></td>
 			<td><?=$row['city']?></td>
 			<td><?=$row['gender']?></td>
+			<td><a  onclick=" return show_warning(this)" href="delete_user.php?id=<?=$row['id']?>" class="btn btn-danger a-btn-slide-text">
+                      <span><strong><i class="fa fa-trash"></i></strong></span></td>
 		</tr>
 		<?php } ?>	 
 		</tbody>
@@ -314,5 +340,38 @@ if(!empty($_POST))
 		});
  	}
  </script> -->
+ <script type="text/javascript">
+ function show_warning(ev){
+  var link =  $(ev).attr("href");
+  
+ swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("Poof! Your Product has been deleted!", {
+  buttons: false,
+  timer: 1000,
+});
+    
+  setTimeout(function(){location.href=link} , 1000);   
+ 
+    
+  } else {
+    swal("Your Product is safe!", {
+  buttons: false,
+  timer: 1000,
+});
+  }
+});
+return false;
+     
+}        
+</script>
+
 </body>
 </html>

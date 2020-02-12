@@ -69,6 +69,18 @@ class Employee {
       return true;
     }
   }
+  function delete_user($user_id)
+  {
+    $sql = "delete from employee where id =".$user_id.";";
+    if($this->conn->query($sql) === TRUE)
+    {
+      header("Location: index.php?message_delete=success");
+    }
+    else
+    {
+      header("Location: index.php?message_delete=failed");
+    }
+  }
  
 }
 ?>

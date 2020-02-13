@@ -467,7 +467,7 @@ if(!empty($_POST) && isset($_POST['submit']))
 })
 .then((willDelete) => {
   if (willDelete) {
-    swal("Poof! Your Product has been deleted!", {
+    swal("Poof! User Data has been deleted!", {
   buttons: false,
   timer: 1000,
 });
@@ -476,7 +476,7 @@ if(!empty($_POST) && isset($_POST['submit']))
  
     
   } else {
-    swal("Your Product is safe!", {
+    swal("User Data is safe!", {
   buttons: false,
   timer: 1000,
 });

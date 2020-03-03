@@ -79,7 +79,7 @@
  <script type="text/javascript">
   $(function () {
     
-    var table = $('#user_list').DataTable({
+   table = $('#user_list').DataTable({
         processing: true,
         serverSide: true,
         ajax: "{{ route('users.index') }}",
@@ -130,7 +130,7 @@ return "<img src='<?=asset('images')?>/"+data+"' height=\"50\"/>"}},
             timer: 1000,
             
           });
-           location.reload();
+          table.ajax.reload();
 
         }
 

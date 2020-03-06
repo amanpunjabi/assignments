@@ -45,6 +45,7 @@
                                         <th>Firstname</th>
                                         <th>Lastname</th>
                                         <th>Email</th>
+                                        <th>Age</th>
                                         <th>Contact</th>
                                         <th>City</th>
                                         <th>Gender</th>
@@ -88,6 +89,7 @@
             {data: 'firstname', name: 'firstname'},
             {data: 'lastname', name: 'lastname'},
             {data: 'email', name: 'email'},
+            {data: 'age', name: 'age'},
             {data: 'contact', name: 'contact'},
             {data: 'city', name: 'city'},
             {data: 'gender', name: 'gender'},

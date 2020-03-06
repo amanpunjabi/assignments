@@ -14,6 +14,12 @@
 	<script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
 
 	<script type="text/javascript" src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
+	<style type="text/css">
+		.error
+		{
+			color: red;
+		}
+	</style>
 
 </head>
 <body>

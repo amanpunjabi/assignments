@@ -29,20 +29,18 @@
                      Update User #{{ $user->id }}</div>
                     <div class="card-body">
                         
+ 
 
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-
-                       {{  Form::open(['url' => route('users.update',$user->id),'method' => 'put', 'files' => true]) }}
+                       {{  Form::open(['url' => route('users.update',$user->id),'method' => 'put', 'files' => true,'id'=>'update']) }}
                     <div class="form-group">
                      {{  Form::label('firstname', 'First Name') }}
                       
                       {{ Form::text('firstname',$user->firstname, ['class' => 'form-control', 'placeholder' => 'firstname']) }}
+                       <label id="firstname-error" class="is-invalid error" for="firstname">
+                      @error('firstname')
+                                {{ $message }}
+                      @enderror
+                    </label>
                        
                     </div>
 
@@ -51,26 +49,47 @@
                       
                       {{ Form::text('lastname', $user->lastname, ['class' => 'form-control', 'placeholder' => 'lastname']) }}
                        
+                      <label id="lastname-error" class="is-invalid error" for="lastname">
+                      @error('lastname')
+                                {{ $message }}
+                      @enderror
+                    </label>
                     </div>
 
                     <div class="form-group">
                      {{  Form::label('email', 'Email') }}
                       
                       {{ Form::email('email', $user->email, ['class' => 'form-control', 'placeholder' => 'email']) }}
-                       
+                       <label id="email-error" class="is-invalid error" for="email">
+                      @error('email')
+                                {{ $message }}
+                      @enderror
+                    </label>
+                      {{ Form::hidden('old_email',$user->email, array('id' => 'old_email')) }} 
                     </div>
 
                     <div class="form-group">
                      {{  Form::label('contact', 'Contact') }}
                       
                       {{ Form::number('contact', $user->contact, ['class' => 'form-control', 'placeholder' => 'contact']) }}
-                       
+                      <label id="contact-error" class="is-invalid error" for="contact">
+                      @error('contact')
+                                {{ $message }}
+                      @enderror
+                    </label>
+                    {{ Form::hidden('old_contact',$user->contact, array('id' => 'old_contact')) }}    
                     </div>
 
                     <div class="form-group">
                      {{  Form::label('city', 'City') }}
                       
                       {{ Form::select('city',['' => 'Select', 'ahmedabad' => 'Ahmedabad','gandhinagar'=>'Gandhinagar','surat'=>'Surat'],$user->city,['class' => 'form-control']) }}
+                  
+                     <label id="city-error" class="is-invalid error" for="city">
+                      @error('city')
+                                {{ $message }}
+                      @enderror
+                    </label>
                         
                   </div>
 
@@ -87,7 +106,11 @@
                           {!! Form::radio('gender', 'Female', false, ['id' => 'Female']) !!}
                           {!! Form::label('female', 'Female') !!}
                       </div>
-                   
+                   <label id="gender-error" class="is-invalid error" for="gender">
+                      @error('gender')
+                                {{ $message }}
+                      @enderror
+                    </label>
                   </div>
 
                   <div class="form-group">
@@ -96,6 +119,11 @@
                       {{ Form::file('profile_pic', ['class' => 'form-control']) }}
                       <br>
                       <img src="{{ asset("images/".$user->profile_pic) }}" height="100px" width="100px">
+                       <label id="profile_pic-error" class="is-invalid error" for="profile_pic">
+                      @error('profile_pic')
+                                {{ $message }}
+                      @enderror
+                    </label>
                        
                   </div>
 
@@ -125,3 +153,9 @@
   </div>
   <!-- /.content-wrapper -->
 @endsection
+@push('js')
+<script type="text/javascript" src="{{ asset('js/validator/jquery.validate.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/validator/additional-methods.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/validation/validation_update.js') }}">
+</script>
+@endpush

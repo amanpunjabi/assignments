@@ -16,4 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('users', 'UserController');
+Route::get('users/ajax/valid_email','UserController@valid_email');
+Route::get('users/ajax/valid_contact','UserController@valid_contact');
+
+Route::get('users/{id}/ajax/valid_email','UserController@valid_email');
+Route::get('users/{id}/ajax/valid_contact','UserController@valid_contact');
 Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');

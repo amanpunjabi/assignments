@@ -56,14 +56,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-            'firstname' => 'required',
+       $email_validate = ($request->has('age'))?'"age"=>"required"':'';
+    // echo $email_validate;exit;
+       $fields = array('firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users',
-            'contact'=>'required',
+            'contact'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:14|unique:users',
             'city' =>'required',
-            'profile_pic'=>'required|image|mimes:jpeg,png,jpg'
-        ]);
+            'profile_pic'=>'required|image|mimes:jpeg,png,jpg|max:1024',
+            'age'=>'required|numeric',
+            $email_validate);
+       $this->validate($request,$fields);
 
         $image = $request->file('profile_pic');
         $new_name = time().'.'.$image->getClientOriginalExtension();
@@ -114,10 +117,10 @@ class UserController extends Controller
         $this->validate($request, [
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email',
-            'contact'=>'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'contact'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:14|unique:users,contact,' . $id,
             'city' =>'required',
-            'profile_pic'=>'image|mimes:jpeg,png,jpg'
+            'profile_pic'=>'mimes:jpeg,png,jpg|max:1024'
         ]);
         $requestData = $request->all();
         // dd($requestData);
@@ -130,8 +133,11 @@ class UserController extends Controller
             $requestData = $request->all();
             $requestData['profile_pic'] = $new_name;
         }
-        
+        unset($requestData['old_email']);
+        unset($requestData['old_contact']);
+        // var_dump($requestData);exit;
         $user = User::findOrFail($id);
+
         $user->update($requestData);
 
         return redirect('users')->with('success', 'User updated!');
@@ -148,4 +154,46 @@ class UserController extends Controller
         User::destroy($id);
         echo true;exit;
     }
+    public function valid_email(Request $request)
+    { 
+
+      $count = User::where('email',$request->email)->count();
+
+      if($request->update == $request->email)
+      {
+        $status = ($count <=1 )?true:false;
+        echo json_encode($status);
+        exit;
+      } 
+      else
+      {
+        $status = ($count == 0)?true:false;
+        echo json_encode($status);
+        exit;
+      }   
+      
+         
+    }
+    public function valid_contact(Request $request)
+    {
+     $count = User::where('contact',$request->contact)->count();
+     // echo $request->update." ".$request->contact;exit;
+     if($request->update == $request->contact)
+     {
+        $status = ($count <= 1)?true:false;
+        echo json_encode($status);
+        exit;
+     }
+     else
+     {
+        $status = ($count == 0)?true:false;
+        echo json_encode($status);
+        exit;
+     }
+     
+     
+      
+         
+    }
+   
 }
